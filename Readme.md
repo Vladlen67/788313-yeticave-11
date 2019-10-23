@@ -1,7 +1,7 @@
 # Личный проект «YetiCave»
 
 * Студент: [Влад](https://up.htmlacademy.ru/php/11/user/788313).
-* Наставник: `Неизвестно`.
+* Наставник: [Mikhail Owl](https://htmlacademy.ru/profile/id1177347).
 
 ---
 
