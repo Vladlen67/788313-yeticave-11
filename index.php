@@ -8,37 +8,37 @@ $categories = ['Доски и лыжи', 'Крепления', 'Ботинки',
 $item = [
     [
         'title' => '2014 Rossignol District Snowboard',
-        'categorie' => 'Доски и лыжи',
+        'category' => '0',
         'price' => '10999',
         'url' => 'img/lot-1.jpg'
     ],
     [
         'title' => 'DC Ply Mens 2016/2017 Snowboard',
-        'categorie' => 'Доски и лыжи',
+        'category' => '0',
         'price' => '159999',
         'url' => 'img/lot-2.jpg'
     ],
     [
         'title' => 'Крепления Union Contact Pro 2015 года размер L/XL',
-        'categorie' => 'Крепления',
+        'category' => '1',
         'price' => '8000',
         'url' => 'img/lot-3.jpg'
     ],
     [
         'title' => 'Ботинки для сноуборда DC Mutiny Charocal',
-        'categorie' => 'Ботинки',
+        'category' => '2',
         'price' => '10999',
         'url' => 'img/lot-4.jpg'
     ],
     [
         'title' => 'Куртка для сноуборда DC Mutiny Charocal',
-        'categorie' => 'Одежда',
+        'category' => '3',
         'price' => '7500',
         'url' => 'img/lot-5.jpg'
     ],
     [
         'title' => 'Маска Oakley Canopy',
-        'categorie' => '	Разное',
+        'category' => '5',
         'price' => '5400',
         'url' => 'img/lot-6.jpg'
     ],
@@ -102,14 +102,12 @@ $item = [
         <p class="promo__text">На нашем интернет-аукционе ты найдёшь самое эксклюзивное сноубордическое и горнолыжное снаряжение.</p>
         <ul class="promo__list">
             <?php
-            $index = 0;
-            while ($index < count($categories)): ?>
+            foreach ($categories as $cat): ?>
             <li class="promo__item promo__item--boards">
-                <a class="promo__link" href="pages/all-lots.html"><?=$categories[$index];?></a>
+                <a class="promo__link" href="pages/all-lots.html"><?=$cat;?></a>
             </li>
             <?php
-            $index++;
-            endwhile;
+            endforeach;
             ?>
         </ul>
     </section>
@@ -118,13 +116,13 @@ $item = [
             <h2>Открытые лоты</h2>
         </div>
         <ul class="lots__list">
-            <?php foreach ($item as $key => $value): ?>
+            <?php foreach ($item as $value): ?>
             <li class="lots__item lot">
                 <div class="lot__image">
                     <img src="<?=$value['url'] ?>" width="350" height="260" alt="<?=$value['title']; ?>">
                 </div>
                 <div class="lot__info">
-                    <span class="lot__category"><?=$value['categorie']; ?></span>
+                    <span class="lot__category"><?=$categories[$value['category']]; ?></span>
                     <h3 class="lot__title"><a class="text-link" href="pages/lot.html"><?=$value['title']; ?></a></h3>
                     <div class="lot__state">
                         <div class="lot__rate">
