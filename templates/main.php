@@ -4,8 +4,8 @@
     <ul class="promo__list">
         <?php
         foreach ($categories as $cat): ?>
-            <li class="promo__item promo__item--boards">
-                <a class="promo__link" href="pages/all-lots.html"><?=$cat;?></a>
+            <li class="promo__item promo__item--<?=$cat['style'];?>>">
+                <a class="promo__link" href="pages/all-lots.html"><?=htmlspecialchars($cat['name']);?></a>
             </li>
         <?php
         endforeach;
