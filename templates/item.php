@@ -11,9 +11,9 @@
                 <span class="lot__cost"><?=cost($value['price']); ?></span>
             </div>
             <div class="lot__timer timer
-                <?php if (!end_of_time($value['ending'][0])) : ?>
+                <?php if (end_of_time($value['ending'])[0] == 0) : ?>
                   timer--finishing
-                  <?php  endif;?>">
+                  <?php  endif; ?>">
                 <?=implode(':',end_of_time($value['ending'])); ?>
             </div>
         </div>

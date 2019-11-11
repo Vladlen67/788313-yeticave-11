@@ -44,7 +44,7 @@ $item = [
         'category' => '0',
         'price' => '10999',
         'url' => 'img/lot-1.jpg',
-        'ending' => "2019-11-21"
+        'ending' => "2019-11-11"
     ],
     [
         'title' => 'DC Ply Mens 2016/2017 Snowboard',
