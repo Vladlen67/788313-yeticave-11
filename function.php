@@ -22,11 +22,17 @@ function include_template($name, $data) {
     return $result;
 };
 
-function show_date ($timestamp) {
+function show_date($timestamp) {
     $dt = date_create();
     $dt = date_timestamp_set($dt, $timestamp);
 
     $format = date_format($dt, "d.m.Y H:i");
     return $format;
+};
+
+function end_of_time($end) {
+    $eot = strtotime($end) - time();
+    $total = [floor($eot / 3600), floor($eot % 3600 / 60)];
+    return $total;
 };
 
