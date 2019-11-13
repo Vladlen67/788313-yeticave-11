@@ -32,11 +32,14 @@ function show_date($timestamp) {
 
 function end_of_time($end) {
     $eot = strtotime($end) - time();
-    $total = [floor($eot / 3600), floor($eot % 3600 / 60)];
-    if ($total[1] < 0) {
-        $total[0] = 0;
-        $total[1] = 0;
-    }
+    if ($eot <= 0) {
+        $total = ["00", "00"];
+    } else {
+        $total = [
+            str_pad(floor($eot / 3600), 2, "0", STR_PAD_LEFT),
+            str_pad(floor(($eot % 3600) / 60), 2, "0", STR_PAD_LEFT)
+        ];
+        };
     return $total;
 };
 
