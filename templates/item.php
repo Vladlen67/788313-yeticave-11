@@ -10,13 +10,15 @@
                 <span class="lot__amount">Стартовая цена</span>
                 <span class="lot__cost"><?=cost($value['price']); ?></span>
             </div>
+            <?php
+            $endOfTime = end_of_time($value['ending']);
+            ?>
             <div
                 class="lot__timer timer
-                <?php if (end_of_time($value['ending'])[0] == 00) : ?>
+                <?php if ($endOfTime[0] == 00) : ?>
                     timer--finishing
                 <?php  endif; ?>">
-                <?=print(end_of_time($value['ending'])[0] .":". end_of_time($value['ending'])[1]); ?>
-
+                <?=$endOfTime[0] . ":" . $endOfTime[1]; ?>
             </div>
         </div>
     </div>

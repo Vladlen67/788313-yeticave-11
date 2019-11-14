@@ -3,7 +3,7 @@ function cost($input) {
     $input = ceil($input);
     $format_cost = number_format($input, 0, '.',' ');
     return $format_cost .' ₽';
-};
+}
 
 function include_template($name, $data) {
     $name = 'templates/' . $name;
@@ -20,7 +20,7 @@ function include_template($name, $data) {
     $result = ob_get_clean();
 
     return $result;
-};
+}
 
 function show_date($timestamp) {
     $dt = date_create();
@@ -28,7 +28,7 @@ function show_date($timestamp) {
 
     $format = date_format($dt, "d.m.Y H:i");
     return $format;
-};
+}
 
 function end_of_time($end) {
     $eot = strtotime($end) - time();
@@ -41,5 +41,5 @@ function end_of_time($end) {
         ];
         };
     return $total;
-};
+}
 
