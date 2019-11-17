@@ -15,7 +15,7 @@ CREATE TABLE lot (
     date_create DATETIME,
     title VARCHAR(150),
     description TEXT(500),
-    img VARCHAR(200),
+    img VARCHAR(250),
     price INT,
     date_end DATE,
     step SMALLINT
