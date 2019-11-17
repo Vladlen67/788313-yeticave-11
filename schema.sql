@@ -18,8 +18,8 @@ CREATE TABLE user (
     register_date DATETIME NOT NULL,
     email VARCHAR(150) NOT NULL UNIQUE,
     name VARCHAR(200) NOT NULL,
-    password TEXT,
-    contact VARCHAR(200)
+    password TEXT NOT NULL,
+    contact VARCHAR(200) NOT NULL
 );
 
 CREATE INDEX us_name ON user(name);
