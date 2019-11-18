@@ -5,36 +5,51 @@ CREATE DATABASE yeticave
 USE yeticave;
 
 CREATE TABLE category (
-    name VARCHAR(120),
-    code VARCHAR(100) UNIQUE
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(120) NOT NULL,
+    code VARCHAR(100) NOT NULL UNIQUE
 );
 
 CREATE INDEX cat_name ON category(name);
-
-CREATE TABLE lot (
-    date_create DATETIME,
-    title VARCHAR(150),
-    description TEXT(500),
-    img VARCHAR(200),
-    price INT,
-    date_end DATE,
-    step SMALLINT
-);
-
-CREATE INDEX lot_title ON lot(title);
-
-CREATE TABLE rate (
-    date DATETIME,
-    amount INT
-);
+CREATE UNIQUE INDEX cat_id ON category(id);
 
 CREATE TABLE user (
-    register_date DATETIME,
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    register_date DATETIME NOT NULL,
     email VARCHAR(150) NOT NULL UNIQUE,
-    name VARCHAR(200),
+    name VARCHAR(200) NOT NULL,
     password TEXT,
     contact VARCHAR(200)
 );
 
 CREATE INDEX us_name ON user(name);
-CREATE INDEX us_email ON user(email);
+CREATE UNIQUE INDEX us_email ON user(email);
+
+CREATE TABLE lot (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    date_create DATETIME,
+    title VARCHAR(150),
+    description TEXT(5000),
+    img VARCHAR(250),
+    price INT,
+    date_end DATE,
+    step SMALLINT,
+    id_user INT NOT NULL,
+    winner INT,
+    id_category INT  NOT NULL,
+    FOREIGN KEY (id_user) REFERENCES user(id),
+    FOREIGN KEY (winner) REFERENCES user(id),
+    FOREIGN KEY (id_category) REFERENCES category(id)
+);
+
+CREATE INDEX lot_title ON lot(title);
+
+CREATE TABLE rate (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    date DATETIME,
+    amount INT NOT NULL,
+    id_user INT,
+    id_lot INT NOT NULL,
+    FOREIGN KEY (id_user) REFERENCES user(id),
+    FOREIGN KEY (id_lot) REFERENCES lot(id)
+);
