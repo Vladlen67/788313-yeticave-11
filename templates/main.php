@@ -4,7 +4,7 @@
     <ul class="promo__list">
         <?php
         foreach ($categories as $cat): ?>
-            <li class="promo__item promo__item--<?=$cat['style'];?>">
+            <li class="promo__item promo__item--<?=$cat['code'];?>">
                 <a class="promo__link" href="pages/all-lots.html"><?=htmlspecialchars($cat['name']);?></a>
             </li>
         <?php
@@ -17,7 +17,7 @@
         <h2>Открытые лоты</h2>
     </div>
     <ul class="lots__list">
-        <?php foreach ($item as $value): ?>
+        <?php foreach ($lot as $value): ?>
             <?=include_template('item.php', ['value' => $value,
                 'categories' => $categories
             ]); ?>

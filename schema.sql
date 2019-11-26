@@ -4,14 +4,14 @@ CREATE DATABASE yeticave
 
 USE yeticave;
 
-CREATE TABLE category (
+CREATE TABLE categories (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(120) NOT NULL,
     code VARCHAR(100) NOT NULL UNIQUE
 );
 
-CREATE INDEX cat_name ON category(name);
-CREATE UNIQUE INDEX cat_id ON category(id);
+CREATE INDEX cat_name ON categories(name);
+CREATE UNIQUE INDEX cat_id ON categories(id);
 
 CREATE TABLE user (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -39,7 +39,7 @@ CREATE TABLE lot (
     id_category INT  NOT NULL,
     FOREIGN KEY (id_user) REFERENCES user(id),
     FOREIGN KEY (winner) REFERENCES user(id),
-    FOREIGN KEY (id_category) REFERENCES category(id)
+    FOREIGN KEY (id_category) REFERENCES categories(id)
 );
 
 CREATE INDEX lot_title ON lot(title);
