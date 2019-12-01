@@ -35,7 +35,7 @@ VALUES
 SELECT * FROM categories ORDER BY id ASC;
 
 /*Получить новые, открытые лоты с текущей ценой и названием категории*/
-SELECT title, price, img, rate.amount, cat.name FROM lot
+SELECT lot.id AS id, title, price, img, rate.amount, cat.name AS name FROM lot
 LEFT JOIN rate
 ON rate.id_lot = lot.id
 JOIN categories cat
@@ -45,7 +45,7 @@ ORDER  BY date_create  DESC
 LIMIT 10;
 
 /*Показать лот по id с названием категории*/
-SELECT lot.*, cat.name FROM  lot
+SELECT lot.*, cat.name AS name FROM  lot
 JOIN categories cat
 ON lot.id_category = cat.id
 WHERE lot.id = 1;
