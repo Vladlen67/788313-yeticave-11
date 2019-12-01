@@ -10,8 +10,10 @@ $page_content = include_template('main.php', [
     'categories' => $categories
 ]);
 //Подключаем шаблон лейаута
+
 $layout_content = include_template('layout.php', [
     'content' => $page_content,
+    'container' => 'container',
     'categories' => $categories,
     'title' => 'YetiCave - Главная страница',
     'is_auth' => $is_auth,

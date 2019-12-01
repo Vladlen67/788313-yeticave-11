@@ -42,6 +42,7 @@ if (isset ($lot_id) && isset($lot['id'])) {
 //Подключаем шаблон лейаута
 $layout_content = include_template('layout.php', [
     'content' => $page_content,
+    'container' => '',
     'categories' => $categories,
     'title' => $title,
     'is_auth' => $is_auth,
