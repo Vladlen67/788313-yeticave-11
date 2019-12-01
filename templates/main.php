@@ -17,8 +17,9 @@
         <h2>Открытые лоты</h2>
     </div>
     <ul class="lots__list">
-        <?php foreach ($lot as $value): ?>
-            <?=include_template('item.php', ['value' => $value,
+        <?php foreach ($item as $value): ?>
+            <?=include_template('item.php', [
+                'value' => $value,
                 'categories' => $categories
             ]); ?>
         <?php endforeach; ?>

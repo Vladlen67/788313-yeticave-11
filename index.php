@@ -1,15 +1,18 @@
 <?php
 
-require_once ('data.php');
-require_once ('function.php');
+//Подключаем сценарии
+require_once('data.php');
+require_once('function.php');
 
+//Подключаем шаблон главной страницы
 $page_content = include_template('main.php', [
-    'lot' => $lot,
+    'item' => $item,
     'categories' => $categories
 ]);
+//Подключаем шаблон лейаута
 $layout_content = include_template('layout.php', [
     'content' => $page_content,
-    'category' => $categories,
+    'categories' => $categories,
     'title' => 'YetiCave - Главная страница',
     'is_auth' => $is_auth,
     'user_name' => $user_name
