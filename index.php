@@ -13,6 +13,7 @@ $page_content = include_template('main.php', [
 $layout_content = include_template('layout.php', [
     'content' => $page_content,
     'categories' => $categories,
+    'container' => 'container',
     'title' => 'YetiCave - Главная страница',
     'is_auth' => $is_auth,
     'user_name' => $user_name
