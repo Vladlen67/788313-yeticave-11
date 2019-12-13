@@ -19,14 +19,14 @@
                 <input type="search" name="search" placeholder="Поиск лота">
                 <input class="main-header__search-btn" type="submit" name="find" value="Найти">
             </form>
-            <a class="main-header__add-lot button" href="pages/add-lot.html">Добавить лот</a>
+            <a class="main-header__add-lot button" href="/add.php">Добавить лот</a>
 
             <nav class="user-menu">
                 <?php
                 if ($is_auth == 1) {
                     ?>
                     <div class="user-menu__logged">
-                        <p><?php print(htmlspecialchars($user_name)); ?></p>
+                        <p><?= (htmlspecialchars($user_name)); ?></p>
                         <a class="user-menu__bets" href="pages/my-bets.html">Мои ставки</a>
                         <a class="user-menu__logout" href="#">Выход</a>
                     </div>
@@ -48,7 +48,7 @@
         </div>
     </header>
 
-    <main class="container"> <?= $content ?> </main>
+    <main class="<?= $container; ?>"> <?= $content ?> </main>
 </div>
 
 <footer class="main-footer">
@@ -58,7 +58,7 @@
             <?php
             foreach ($categories as $cat): ?>
                 <li class="nav__item">
-                    <a href="pages/all-lots.html"><?= htmlspecialchars($cat['name']); ?></a>
+                    <a href="lots.php?cat=<?= htmlspecialchars($cat['id']); ?>"><?= htmlspecialchars($cat['name']); ?></a>
                 </li>
             <?php
             endforeach;
@@ -108,7 +108,7 @@
                 </svg>
             </a>
         </div>
-        <a class="main-footer__add-lot button" href="add-lot.html">Добавить лот</a>
+        <a class="main-footer__add-lot button" href="/add.php">Добавить лот</a>
         <div class="main-footer__developed-by">
             <span class="visually-hidden">Разработано:</span>
             <a class="logo-academy" href="https://htmlacademy.ru/intensive/php">

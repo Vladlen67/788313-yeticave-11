@@ -40,5 +40,3 @@ if (!$item_obj) {
     print ("Ошибка MySql: " . $error);
 };
 $item = mysqli_fetch_all($item_obj, MYSQLI_ASSOC);
-
-?>

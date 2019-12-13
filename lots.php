@@ -4,28 +4,32 @@ require_once('data.php');
 require_once('function.php');
 
 //Получение данных из GET
-$lot_id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+$cat_id = filter_input(INPUT_GET, 'cat', FILTER_SANITIZE_NUMBER_INT);
 
 //Запрос на получение лота по id
-$sql_lot = "SELECT lot.*, cat.name AS name FROM  lot "
+$sql_lots = "SELECT lot.*, cat.name AS name, cat.id AS catid FROM  lot "
     . "JOIN categories cat "
     . "ON lot.id_category = cat.id "
-    . "WHERE lot.id = " . $lot_id;
+    . "WHERE cat.id = " . $cat_id;
 
 //Получение записа по id
-$lot_obj = mysqli_query($con, $sql_lot);
-if (!$lot_obj) {
+$lots_obj = mysqli_query($con, $sql_lots);
+if (!$lots_obj) {
     $error = mysqli_error($con);
     print ("Ошибка MySql: " . $error);
 };
-$lot = mysqli_fetch_assoc($lot_obj);
 
-//Проверка на существование лота
-if (isset ($_GET['id']) && isset($lot['id'])) {
-    $title = $lot['title'];
-    //Подключаем шаблон страницы лот
-    $page_content = include_template('lot-item.php', [
-        'lot' => $lot,
+$lots = mysqli_fetch_all($lots_obj, MYSQLI_ASSOC);
+
+//Создаем массив для получения title и проверки на существование
+$lots_arr = end($lots);
+
+//Проверка на существование категории
+if (isset ($_GET['cat']) && isset($lots_arr['catid'])) {
+    $title = $lots_arr['name'];
+    //Подключаем шаблон страницы лотов
+    $page_content = include_template('all-lots.php', [
+        'lots' => $lots,
         'categories' => $categories,
         'title' => $title
     ]);
@@ -37,7 +41,6 @@ if (isset ($_GET['id']) && isset($lot['id'])) {
     ]);
 };
 
-//Подключаем шаблон лейаута
 $layout_content = include_template('layout.php', [
     'content' => $page_content,
     'categories' => $categories,
@@ -48,4 +51,3 @@ $layout_content = include_template('layout.php', [
 ]);
 
 print ($layout_content);
-
