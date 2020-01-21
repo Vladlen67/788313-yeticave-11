@@ -2,6 +2,7 @@
 //Подключаем сценарии
 require_once('data.php');
 require_once('function.php');
+require_once('helpers.php');
 
 //Получение данных из GET
 $cat_id = filter_input(INPUT_GET, 'cat', FILTER_SANITIZE_NUMBER_INT);

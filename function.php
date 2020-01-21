@@ -7,24 +7,6 @@ function cost($input)
     return $format_cost . ' ₽';
 }
 
-//Шаблонизатор
-function include_template($name, $data)
-{
-    $name = 'templates/' . $name;
-    $result = '';
-
-    if (!file_exists($name)) {
-        return $result;
-    }
-
-    ob_start();
-    extract($data);
-    require $name;
-
-    $result = ob_get_clean();
-
-    return $result;
-}
 //Валидация email
 function validateEmail($email) {
     if (!filter_var(INPUT_POST, $email, FILTER_VALIDATE_EMAIL)) {
@@ -54,26 +36,20 @@ function isCorrectNumber($num, $min, $max) {
         return "Значение должно быть от $min до $max";
     }
 }
-//Проверяет переданную дату на соответствие формату 'ГГГГ-ММ-ДД'
-function is_date_valid(string $date) : bool {
-    $format_to_check = 'Y-m-d';
-    $dateTimeObj = date_create_from_format($format_to_check, $date);
 
-    return $dateTimeObj !== false && array_sum(date_get_last_errors()) === 0;
-}
 //Проверка даты
 function isCorrectDate($date) {
     $min = date('Y-m-d', strtotime("+1 day"));
     $max = date('Y-m-d', strtotime("+2 month"));
-    if (is_date_valid($date)) {
+    if (!is_date_valid($date)) {
         return 'Введите дату в формате ГГГГ-ММ-ДД';
     } elseif ($date < $min|| $date > $max) {
-        return 'Введите значение от $min до $max';
+        return "Введите значение от $min до $max";
     }
 }
 // Функция восстанавливающая заполненные поля формы при ошибке
 function getPostVal($name) {
-    return $_POST['$name'] ?? "";
+    return $_POST[$name] ?? "";
 }
 
 function show_date($timestamp)

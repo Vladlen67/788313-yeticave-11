@@ -3,6 +3,7 @@
 //Подключаем сценарии
 require_once('data.php');
 require_once('function.php');
+require_once('helpers.php');
 
 //Подключаем шаблон главной страницы
 $page_content = include_template('main.php', [

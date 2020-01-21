@@ -6,7 +6,7 @@
     <div class="form__container-two">
         <div class="form__item <?= isset($errors['title']) ? 'form__item--invalid' : ''; ?>">
             <label for="lot-title">Наименование <sup>*</sup></label>
-            <input id="lot-title" type="text" name="title" placeholder="Введите наименование лота" value="<?= getPostVal('title') ?>">
+            <input id="lot-title" type="text" name="title" placeholder="Введите наименование лота" value="<?= getPostVal('title'); ?>">
             <span class="form__error"><?= $errors['title'] ?? ''; ?></span>
         </div>
         <div class="form__item <?= isset($errors['catid']) ? 'form__item--invalid' : ''; ?>">
@@ -14,7 +14,7 @@
             <select id="category" name="catid">
                 <option>Выберите категорию</option>
                 <?php foreach ($categories as $cat): ?>
-                <option value="<?= $cat['id'] ?>"<?php if ($cat['id'] == getPostVal('catid')): ?>selected<?php endif; ?> ><?=$cat['name']; ?> </option>
+                <option value="<?= $cat['id'] ?>"<?php if ($cat['id'] == getPostVal('catid')): ?>selected<?php endif; ?> ><?= $cat['name']; ?> </option>
                 <?php endforeach; ?>
             </select>
             <span class="form__error"><?= $errors['catid'] ?? ''; ?></span>
@@ -22,44 +22,42 @@
     </div>
     <div class="form__item form__item--wide <?= isset($errors['description']) ? 'form__item--invalid' : ''; ?>">
         <label for="message">Описание <sup>*</sup></label>
-        <textarea id="message" name="description" placeholder="Напишите описание лота">
-            <?= getPostVal('description'); ?>
-        </textarea>
+        <textarea id="message" name="description" placeholder="Напишите описание лота"><?= getPostVal('description'); ?></textarea>
         <span class="form__error"><?= $errors['description'] ?? ''; ?></span>
     </div>
-    <div class="form__item form__item--file">
+    <div class="form__item form__item--file <?= isset($errors['file']) ? 'form__item--invalid' : ''; ?>">
         <label>Изображение <sup>*</sup></label>
         <div class="form__input-file">
             <input class="visually-hidden" type="file" id="f_img" value="" name="f_img">
-            <label for="lot-img">
+            <label for="f_img">
                 Добавить
             </label>
-            <span class="form__error"><?= $errors['img'] ?? ''; ?></span>
+            <span class="form__error"><?= $errors['file'] ?? ''; ?></span>
         </div>
     </div>
     <div class="form__container-three">
-        <div class="form__item form__item--small">
+        <div class="form__item form__item--small <?= isset($errors['price']) ? 'form__item--invalid' : ''; ?>">
             <label for="lot-rate">Начальная цена <sup>*</sup></label>
-            <input id="lot-rate" type="text" name="price" placeholder="0">
-            <span class="form__error">Введите начальную цену</span>
+            <input id="lot-rate" type="text" name="price" placeholder="0" value="<?= getPostVal('price'); ?>">
+            <span class="form__error"><?= $errors['price'] ?? ''; ?></span>
         </div>
-        <div class="form__item form__item--small">
+        <div class="form__item form__item--small <?= isset($errors['step']) ? 'form__item--invalid' : ''; ?>">
             <label for="lot-step">Шаг ставки <sup>*</sup></label>
-            <input id="lot-step" type="text" name="step" placeholder="0">
-            <span class="form__error">Введите шаг ставки</span>
+            <input id="lot-step" type="text" name="step" placeholder="0" value="<?= getPostVal('step'); ?>">
+            <span class="form__error"><?= $errors['step'] ?? ''; ?></span>
         </div>
-        <div class="form__item">
+        <div class="form__item <?= isset($errors['date_end']) ? 'form__item--invalid' : ''; ?>">
             <label for="lot-date">Дата окончания торгов <sup>*</sup></label>
             <input class="form__input-date" id="lot-date" type="text" name="date_end"
-                   placeholder="Введите дату в формате ГГГГ-ММ-ДД">
-            <span class="form__error">Введите дату завершения торгов</span>
+                   placeholder="Введите дату в формате ГГГГ-ММ-ДД" value="<?= getPostVal('date_end'); ?>">
+            <span class="form__error"><?= $errors['date_end'] ?? ''; ?></span>
         </div>
     </div>
     <?php if (isset($errors)): ?>
     <span class="form__error form__error--bottom">Пожалуйста, исправьте ошибки в форме.</span>
     <ul>
         <?php foreach ($errors as $value): ?>
-        <li><strong><?= $value; ?><strong/></li>
+        <li><strong><?= $value; ?></strong></li>
         <?php endforeach; ?>
     </ul>
     <?php endif; ?>
