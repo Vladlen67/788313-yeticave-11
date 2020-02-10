@@ -9,7 +9,7 @@ function cost($input)
 
 //Валидация email
 function validateEmail($email) {
-    if (!filter_var(INPUT_POST, $email, FILTER_VALIDATE_EMAIL)) {
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         return "Введите корректный email";
     }
 }
